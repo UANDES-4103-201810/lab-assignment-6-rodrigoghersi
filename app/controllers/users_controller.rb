@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :is_user_logged_in?
+  
 
   # GET /users
   # GET /users.json
@@ -33,7 +34,6 @@ class UsersController < ApplicationController
         redirect_to registrations_path
 	flash[:notice] = "There was a problem with the registration"
       end
-    end
   end
 
   # PATCH/PUT /users/1
@@ -46,16 +46,14 @@ class UsersController < ApplicationController
         redirect_to edit_user_path
 	flash[:notice] = "There was a problem with the user update"
       end
-    end
   end
 
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
     @user.destroy
-	redirect_to users_path
-	flash[:notice] = "User was successfully destroyed"
-    end
+    redirect_to users_path
+    flash[:notice] = "User was successfully destroyed"
   end
 
   private
